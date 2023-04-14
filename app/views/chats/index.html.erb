@@ -1,0 +1,20 @@
+<% @chats.each do |chat| %>
+  <%= chat.name %>
+  <p>
+    <% chat.messages.each do |message| %>
+      <br><%= message.role %>: <%=  message.content %>
+    <% end %>
+  </p>
+<% end %>
+
+Start New Chat
+
+<%= form_with(url: '/chats/start_new') do |form| %>
+  <div>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

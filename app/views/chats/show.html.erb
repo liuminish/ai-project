@@ -1,0 +1,16 @@
+<%= link_to "Back to main", chats_path %>
+
+<%= @chat.name %>
+<% @chat.messages.each do |message| %>
+  <br><%= message.role %>: <%=  message.content %>
+<% end %>
+
+<%= form_with(model: @chat, url: add_message_chat_path(@chat), method: "post") do |form| %>
+  <div>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
